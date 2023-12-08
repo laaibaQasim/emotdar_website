@@ -1,0 +1,33 @@
+  .detector-page {
+    margin-top: 90px;
+    position: relative;
+  }
+  
+  .canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+  
+  .main-body {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 78vh;
+  }
+
+  video {
+    display: block; /* Remove default inline display */
+    margin: 0 auto; /* Center the video horizontally */
+    box-shadow: 0 0 20px rgba(110, 103, 103, 0.5);
+  }
+  .robot-overlay {
+    margin-top: 17%;
+    margin-left:1%;
+  }
+  .overlay-text {
+    font-family: 'Poppins', sans-serif;
+    color: rgb(241, 241, 241);
+  }

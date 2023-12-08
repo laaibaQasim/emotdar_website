@@ -1,0 +1,17 @@
+.navbar {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.navbar-brand {
+    color: white;
+    font-size: 27px !important;
+}
+.nav-item {
+    font-size: 17px;
+    font-weight: 10;
+}
+.nav-item:hover {
+    border-bottom: 1px solid rgb(255, 255, 255);
+}
+/* .navbar-scrolled {
+    background-color:rgb(22, 37, 57); 
+  } */

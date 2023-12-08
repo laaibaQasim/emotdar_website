@@ -1,0 +1,135 @@
+   .home-content {
+    text-align: center;
+    padding: 20px; /* Add padding for better responsiveness */
+  }
+  
+  .main-heading {
+    text-align: center;
+    color: rgb(250, 249, 249);
+    font-family: 'Poppins', sans-serif;
+    font-size: 5vw; /* Use vw for responsive font size */
+    margin-top: 5vw; /* Use vw for margin */
+    font-weight: bold;
+  }
+  
+  .main-heading p {
+    margin-bottom: -1vw; /* Use vw for margin */
+    font-weight: 600;
+  }
+  
+  .sub-heading {
+    text-align: center;
+    color: rgb(250, 249, 249);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5vw; /* Use vw for responsive font size */
+    font-weight: 100;
+    margin-top: 2vw; /* Use vw for margin */
+    
+  }
+  
+  .sub-heading p {
+    margin-bottom: -0.5vw; /* Use vw for margin */
+  }
+  
+  .btn-explore {
+    background-color: transparent;
+  border: 2px solid #fff;
+    margin-top: 2vw; /* Use vw for margin */
+    border-radius: 1vw; /* Use vw for border-radius */
+    padding: 0.5vw 1.5vw; /* Use vw for padding */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5vw; /* Use vw for responsive font size */
+    font-weight: 100;
+  }
+  .btn-explore:hover {
+    font-size: 1.8vw; /* Use vw for responsive font size */
+    padding: 1vw 2vw; /* Use vw for padding */
+  }
+  
+  .home-info {
+    margin-top: 3vw;
+    background-color: rgb(32, 46, 64);
+    font-size: 1.25vw;
+    color: white;
+    padding: 4vw;
+    box-shadow: 10px 20px 20px rgba(69, 69, 69, 0.5);
+  }
+ 
+
+  .card-image-top {
+    cursor: pointer;
+    width: 30vw; /* Use vw for responsive width */
+    height: 20vw;
+    padding: 0.5vw; /* Use vw for padding */
+  }
+  
+  .cards-robot {
+    padding-top: 60px;
+    padding: 22px;
+    display: flex;
+    justify-content: center;
+    gap: 8vw; /* Use vw for gap */
+  }
+  
+  .card-text {
+    cursor: pointer;
+    background-color: rgb(31, 52, 79);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5vw; /* Use vw for responsive font size */
+    text-align: center;
+  }
+  .card-text:hover {
+    background-color: rgb(22, 37, 57);
+  }
+  .banner-image {
+    filter: brightness(90%);
+    background-image: url(../../components/assets/my_gif.gif);
+    background-size: cover;
+    height: 30vh;
+    box-shadow: 0 30px 40px rgba(69, 69, 69, 0.5);
+  }
+.modules-heading h2{
+  font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding-top: 40px;
+    font-size: 40px;
+    font-weight:700;
+}
+.slider-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-title h2 {
+  margin: 0; 
+}
+
+.carousel-indicators li,
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgb(22, 37, 57);
+}
+.carousel-indicators li {
+  background-color: rgb(22, 37, 57);
+  padding: 2px;
+  cursor: pointer;
+}
+
+.sub-heading p,
+.main-heading p{
+  animation-duration: 1s;
+  animation-name: slidein;
+}
+@keyframes slidein {
+  from {
+    margin-right: 100%;
+  }
+  to {
+    margin-right: 0%;
+  }
+}
