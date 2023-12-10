@@ -1,13 +1,30 @@
-from flask import Flask
-from flask_cors import CORS
-from flask_restx import Api
+import logging
+from http import HTTPStatus
 
-app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+from flask import Blueprint
+from flask_restx import Api
+from werkzeug.exceptions import Unauthorized
+
+from .emotions.endpoints import api as emotion_api
+
+blueprint = Blueprint("api", __name__)
+
+authorizations = {
+    "Authorization": {
+        "description": "",
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+    }
+}
 
 api = Api(
-    app,
-    version="1.0",
-    title="Emotion Recorder API",
-    description="API for emotion recording",
+    blueprint,
+    title="Emodar API",
+    version="0.1",
+    description="Emodar APIs",
+    authorizations=authorizations,
+    security="Authorization",
 )
+
+api.add_namespace(emotion_api)

@@ -6,8 +6,9 @@ from model.base import Base, db
 
 class Contributor(Base):
     __tablename__ = "contributor"
+    __table_args__ = {"extend_existing": True}
 
-    password = Column(String, nullable=False)
+    password = Column(String(126), nullable=False)
     roll_number = Column(String(10), unique=True, nullable=False)
 
     @classmethod

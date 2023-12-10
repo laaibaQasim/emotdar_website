@@ -4,3 +4,4 @@ env
 .vscode
 .ev
 backend/etc/settings.json
+__pycache__/
