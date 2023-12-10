@@ -1,9 +1,15 @@
 import os
+
 from flask import send_from_directory
-from flask_restx import Resource
-from flask_restx import fields
-from . import app, api
-from .utils import emotions, recording_directory, emoji_directory, default_emoji_filename
+from flask_restx import Resource, fields
+
+from . import api, app
+from .utils import (
+    default_emoji_filename,
+    emoji_directory,
+    emotions,
+    recording_directory,
+)
 
 # Define a data structure for emotions
 emotion_model = api.model(
@@ -12,6 +18,7 @@ emotion_model = api.model(
         "name": fields.String(required=True, description="Emotion name"),
     },
 )
+
 
 @api.route("/emotions")
 class EmotionList(Resource):
@@ -33,6 +40,7 @@ class EmotionPlay(Resource):
                 recording_directory, f"{name}.mp4", as_attachment=True
             )
 
+
 @api.route("/emoji/play")
 class Emoji(Resource):
     def get(self):
@@ -42,6 +50,5 @@ class Emoji(Resource):
             return {"error": f"Emoji file {emoji_path} not found"}, 404
 
         return send_from_directory(
-        emoji_directory, default_emoji_filename, as_attachment=True
-    )
-
+            emoji_directory, default_emoji_filename, as_attachment=True
+        )
