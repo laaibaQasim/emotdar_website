@@ -1,9 +1,5 @@
-import logging
-from http import HTTPStatus
-
 from flask import Blueprint
 from flask_restx import Api
-from werkzeug.exceptions import Unauthorized
 
 from .emotions.endpoints import api as emotion_api
 

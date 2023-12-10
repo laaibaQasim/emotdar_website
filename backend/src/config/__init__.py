@@ -17,12 +17,12 @@ class Settings:
 
     def __delattr__(self, key: str) -> None:
         if self.locked:
-            raise AttributeError(f"Can not modify settings")
+            raise AttributeError("Can not modify settings")
         super().__delattr__(key)
 
     def __setattr__(self, key: str, value: Any) -> None:
         if self.locked:
-            raise AttributeError(f"Can not modify settings")
+            raise AttributeError("Can not modify settings")
         super().__setattr__(key, value)
 
 
