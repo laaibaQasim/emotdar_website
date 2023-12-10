@@ -1,6 +1,3 @@
-from http import HTTPStatus
-
-from flask import g
 from flask_restx import Resource
 
 from api.emotions import schemas
