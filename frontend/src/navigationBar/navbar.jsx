@@ -23,9 +23,9 @@ const Navbar = ({navBarColor}) => {
       }
       setNavbarBackground(hasBackground);
     };
-  
+
     window.addEventListener('scroll', handleScroll);
-  
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
