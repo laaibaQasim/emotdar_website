@@ -18,9 +18,6 @@ class EmotionList(Resource):
     @api.marshal_list_with(schemas.emotion_response, skip_none=True)
     def get(self):
         """List all emotions"""
-        emotions = Emotion.get()
-        return success(emotions), HTTPStatus.OK
-        # print(g.contributor.id)
         # return failure("Emotion List not found"), HTTPStatus.NOT_FOUND
         return (
             success(
