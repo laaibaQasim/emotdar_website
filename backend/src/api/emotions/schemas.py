@@ -2,9 +2,18 @@ from flask_restx.fields import Integer, List, Nested, String
 
 from . import api
 
+emotion_post = api.model(
+    "emotion_post",
+    {
+        "name": String(required=True, description="Emotion name"),
+    },
+    strict=True,
+)
+
 emotion_model = api.model(
     "emotion_model",
     {
+        "id": Integer(),
         "name": String(required=True, description="Emotion name"),
     },
     strict=True,

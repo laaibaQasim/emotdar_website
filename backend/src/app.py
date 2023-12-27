@@ -19,3 +19,12 @@ CORS(app, max_age=600)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
+
+
+# insert all emotions
+# insert all sentences
+# insert emotion_sentence
+# emotion_id, sentence_id, contributor_id
+# if emotion_id
+# if sentence_id
+# emotion_sentence = emotion_sentence(emotion_id, sentence_id)

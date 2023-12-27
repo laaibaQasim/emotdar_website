@@ -12,6 +12,7 @@ db = SQLAlchemy(session_options={"autoflush": False})
 @as_declarative()
 class Base(object):
     __abstract__ = True
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=True)
     updated_at = Column(
