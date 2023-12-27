@@ -21,7 +21,7 @@ const VideoPlayer = ({ selectedEmotion, showCamera, recording }) => {
 
         if (!selectedEmotion) {
           // Set a default emoji GIF when no emotion is selected
-          setMediaUrl('http://localhost:5000/emoji/play');
+          setMediaUrl('http://127.0.0.1:5000/emotions/play');
           return;
         }
 

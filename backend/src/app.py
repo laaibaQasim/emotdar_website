@@ -12,7 +12,7 @@ app.app_context().push()
 app.config["SQLALCHEMY_DATABASE_URI"] = settings.database_uri
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["CORS_HEADERS"] = "Content-Type"
-app.register_blueprint(blueprint, url_prefix="/api/v1")
+app.register_blueprint(blueprint, url_prefix="/")
 db.init_app(app)
 Migrate(app, db)
 CORS(app, max_age=600)

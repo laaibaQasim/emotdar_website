@@ -1,12 +1,14 @@
 from http import HTTPStatus
 
 from flask_restx import Resource
+from flask import send_from_directory
 
 from api.emotions import schemas
 
 # from common.lists import emotions
 from common.enums import Emotions
 from helper.response import success
+from static import emojis
 
 from . import api
 
@@ -23,3 +25,7 @@ class EmotionList(Resource):
             ),
             HTTPStatus.OK,
         )
+@api.route("/play")
+class EmojiPlay(Resource):
+    def get(self):
+        return send_from_directory("static/emojis", "emojis.gif", as_attachment=True)
