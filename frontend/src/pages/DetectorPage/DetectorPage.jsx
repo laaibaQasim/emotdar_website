@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as faceapi from 'face-api.js';
-import './DetectorPage.css'; 
-import robot2 from '../../components/assets/robot2.png';
+import './DetectorPage.css';
+import robot2 from '../../components/assets/images/robot2.png';
 import Typewriter from 'typewriter-effect';
 
 const DetectorPage = () => {
@@ -44,8 +44,8 @@ const DetectorPage = () => {
         canvasContainer.appendChild(canvas);
 
         // Adjust the size of video and canvas
-        const videoWidth = 380;
-        const videoHeight = 291; 
+        const videoWidth = 600;
+        const videoHeight = 450;
         video.width = videoWidth;
         video.height = videoHeight;
 
@@ -61,7 +61,7 @@ const DetectorPage = () => {
           faceapi.draw.drawDetections(canvas, resizedDetections);
           faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
           faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-        }, 100);
+        }, 1000);
 
         // Cleanup interval and stream on component unmount
         return () => {

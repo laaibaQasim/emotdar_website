@@ -5,3 +5,6 @@ env
 .ev
 backend/etc/settings.json
 __pycache__/
+videos/
+images/
+build/

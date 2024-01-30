@@ -2,26 +2,37 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import './navbar.css';
 
-const Navbar = ({navBarColor}) => {
+const Navbar = ({changeColor}) => {
   const [navbarBackground, setNavbarBackground] = useState(false);
-
+  useEffect(()=>{
+    if (changeColor === false) {
+      const navBarDiv = document.getElementById('navbar');
+      navBarDiv.style.backgroundColor="rgba(22, 37, 57)";
+    }
+  });
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const totalHeight = document.documentElement.scrollHeight;
-      const scrollPercentage = (scrollY / (totalHeight - windowHeight)) * 100;
-      const hasBackground = scrollPercentage > 40;
+      if (changeColor === true) {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const totalHeight = document.documentElement.scrollHeight;
+        const scrollPercentage = (scrollY / (totalHeight - windowHeight)) * 100;
+        const hasBackground = scrollPercentage > 40;
 
-      if (hasBackground) {
-        const navBarDiv = document.getElementById('navbar');
-        navBarDiv.style.backgroundColor=navBarColor;
+        if (hasBackground) {
+          const navBarDiv = document.getElementById('navbar');
+          navBarDiv.style.backgroundColor="rgba(22, 37, 57)";
+        }
+        else {
+          const navBarDiv = document.getElementById('navbar');
+          navBarDiv.style.backgroundColor="rgba(0,0,0,0.2)";
+        }
+        setNavbarBackground(hasBackground);
       }
       else {
         const navBarDiv = document.getElementById('navbar');
-        navBarDiv.style.backgroundColor="rgba(0,0,0,0.2)";
+        navBarDiv.style.backgroundColor="rgba(22, 37, 57)";
       }
-      setNavbarBackground(hasBackground);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -29,7 +40,7 @@ const Navbar = ({navBarColor}) => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [navBarColor]);
+  }, [changeColor]);
 
   const navbarClass = navbarBackground ? 'navbar-scrolled' : '';
 

@@ -24,16 +24,9 @@ const VideoPlayer = ({ selectedEmotion, showCamera, recording }) => {
           setMediaUrl('http://127.0.0.1:5000/emotions/play');
           return;
         }
-
-        const response = await fetch(`http://localhost:5000/emotions/${selectedEmotion}/play`);
-
-        if (!response.ok) {
-          throw new Error(`Error fetching media URL: ${response.status} - ${response.statusText}`);
-        }
-
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-        setMediaUrl(url);
+        const videoPath = `/videos/${selectedEmotion}.mp4`;
+        setMediaUrl(videoPath);
+        console.log(mediaUrl);
       } catch (error) {
         console.error(error.message);
       }
@@ -60,7 +53,7 @@ const VideoPlayer = ({ selectedEmotion, showCamera, recording }) => {
           </video>
         ) : selectedEmotion ? (
           <video width="640" height="360" key={mediaUrl} controls>
-            <source src={mediaUrl} type="video/mp4" />
+            <source src={process.env.PUBLIC_URL + mediaUrl} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         ) : (
@@ -71,7 +64,7 @@ const VideoPlayer = ({ selectedEmotion, showCamera, recording }) => {
         !showCamera && <p>Loading media...</p>
       )}
     </div>
-  );  
+  );
 };
 
 export default VideoPlayer;

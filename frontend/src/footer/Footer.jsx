@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './footer.css'
-const Footer = ({color, marginTop, copyRightColor}) => {
+const Footer = ({marginTop}) => {
     const footerStyle = {
-        backgroundColor: color,
+        backgroundColor: "rgba(22, 37, 57)",
         marginTop: marginTop,
       };
       const copyRightStyle = {
-        backgroundColor: copyRightColor || "black",
+        backgroundColor: "rgba(16, 26, 39)",
       };
     return(
         <section id = "footer" className="footer" style={footerStyle}>
@@ -17,16 +18,16 @@ const Footer = ({color, marginTop, copyRightColor}) => {
             </div>
             <ul>
                 <li>
-                    <a href ="">HOME</a>
+                    <Link to="/" className="nav-link text-white">HOME</Link>
                 </li>
                 <li>
-                    <a href ="">RECORDER</a>
+                    <Link to="/recorder" className="nav-link text-white">RECORDER</Link>
                 </li>
                 <li>
-                    <a href ="">DETECTOR</a>
+                    <Link to="/detector" className="nav-link text-white">DETECTOR</Link>
                 </li>
                 <li>
-                    <a href ="">ABOUT US</a>
+                    <Link to="/about" className="nav-link text-white">ABOUT US</Link>
                 </li>
             </ul>
             <p className='copy-right' style={copyRightStyle}>Copyrights @2023 all rights reserved by EmotDar</p>

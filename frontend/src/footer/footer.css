@@ -37,8 +37,10 @@
 .copy-right {
     text-align: center;
     color: whitesmoke;
-    /* background-color:rgb(16, 26, 39) ; */
     font-weight: 100;
+    margin-top: auto;
+   width: 100%;
+   bottom: 0;
 }
 .footer {
     margin-bottom: -20px;

@@ -84,7 +84,7 @@
   }
   .banner-image {
     filter: brightness(90%);
-    background-image: url(../../components/assets/my_gif.gif);
+    background-image: url(../../components/assets/images/my_gif.gif);
     background-size: cover;
     height: 30vh;
     box-shadow: 0 30px 40px rgba(69, 69, 69, 0.5);

@@ -1,7 +1,7 @@
-import data_collection from '../../components/assets/data_collection.jpg'; 
-import detect_emotions from '../../components/assets/emotion_detection.png';
-import ayesha from '../../components/assets/ayesha.jpeg' 
-import laiba from '../../components/assets/laiba5.jpeg'; 
+import data_collection from '../../components/assets/images/data_collection.jpg'; 
+import detect_emotions from '../../components/assets/images/emotion_detection.png';
+import ayesha from '../../components/assets/images/ayesha.jpeg' 
+import laiba from '../../components/assets/images/laiba5.jpeg'; 
 import './HomePage.css'
 import InventorCard from "./InventorCard";
 import RobotCard from "./RobotCard";
@@ -73,9 +73,9 @@ const HomePage = () =>
                 </div>
             </div>
         </div>
-  
+
         {/* Main Content */}
-        
+
       </div>
       <div className="modules-heading">
         <h2>Our Modules</h2>
