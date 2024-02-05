@@ -21,5 +21,4 @@ class Contributor(Base):
         Returns:
             contributor
         """
-        row = db.session.query(cls).filter(cls.roll_number == roll_number).first()
-        return row
+        return db.session.query(cls).filter(cls.roll_number == roll_number).first()

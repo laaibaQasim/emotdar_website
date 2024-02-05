@@ -1,22 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Recording.css';
 
-const Recording = ({ selectedEmotion, onCameraUnmount, onDiscard, onRecordingFinish }) => {
+const Recording = ({ selectedEmotion, onCameraUnmount, onDiscard, selectedSentence }) => {
   const videoElementRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const chunksRef = useRef([]);
-  const [remainingTime, setRemainingTime] = useState(5);
+  const [remainingTime, setRemainingTime] = useState(2);
   const [recordedBlob, setRecordedBlob] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
+  const [rollNo, setRollNo] = useState('');
 
   const handleSave = () => {
+    console.log('User input:', rollNo);
     if (recordedBlob) {
       const formData = new FormData();
-  
+
+      formData.append('rollNo', rollNo);
       formData.append('name', selectedEmotion);
+      formData.append('id', selectedSentence);
+      formData.append('video', true);
       formData.append('video', recordedBlob, 'recorded-video.webm');
   
-      const apiUrl = 'http://127.0.0.1:5000/save-video';
+      const apiUrl = 'http://127.0.0.1:5000/recordings';
 
       console.log("size: ", recordedBlob.size)
       fetch(apiUrl, {
@@ -37,7 +42,6 @@ const Recording = ({ selectedEmotion, onCameraUnmount, onDiscard, onRecordingFin
     }
     onDiscard();
   };
-  
 
   const handleDiscard = () => {
     onDiscard();
@@ -46,7 +50,7 @@ const Recording = ({ selectedEmotion, onCameraUnmount, onDiscard, onRecordingFin
   const startRecording = () => {
     setIsRecording(true);
 
-    navigator.mediaDevices.getUserMedia({ video: true })
+    navigator.mediaDevices.getUserMedia({ video: true, audio:true })
       .then((stream) => {
         videoElementRef.current.srcObject = stream;
         videoElementRef.current.play();
@@ -80,7 +84,7 @@ const Recording = ({ selectedEmotion, onCameraUnmount, onDiscard, onRecordingFin
             mediaRecorderRef.current.stop();
           }
           clearInterval(intervalId);
-        }, 5000);
+        }, 2000);
       })
       .catch((error) => {
         console.error('Error accessing camera:', error);
@@ -112,9 +116,24 @@ const Recording = ({ selectedEmotion, onCameraUnmount, onDiscard, onRecordingFin
     };
   }, [onCameraUnmount, selectedEmotion]);
 
+  useEffect(() => {
+    const storedRollNo = localStorage.getItem('prevRollNo');
+    if (storedRollNo) {
+        setRollNo(storedRollNo);
+    }
+}, []);
+
+  const handleRollNoChange = (e) => {
+    const newRollNo = e.target.value;
+    setRollNo(newRollNo);
+
+    // Save the roll number to local storage
+    localStorage.setItem('prevRollNo', newRollNo);
+  };
+
   return (
     <div className="recording-container">
-      <video ref={videoElementRef} />
+      <video muted="muted" ref={videoElementRef} />
 
       <div className="remainingTime">
         Remaining Time: {remainingTime} seconds
@@ -128,15 +147,19 @@ const Recording = ({ selectedEmotion, onCameraUnmount, onDiscard, onRecordingFin
 
           <div className="button-container">
             <button
-              type="button"
-              className="cp-btn "
-              style={{ marginTop:'5px',margin: '2px', padding: '8px 16px' }}
-              onClick={handleSave}>Save</button>
+                type="submit"
+                className="cp-btn "
+                style={{ marginTop:'5px',margin: '2px', padding: '8px 16px' }}
+                onClick={handleSave}>Save</button>
             <button
               type="button"
               className="cp-btn alert"
-              style={{ margin: '2px', padding: '8px 16px', marginTop:'5px' }}
+              style={{ margin: '2px', padding: '8px 16px', marginTop:'5px'}}
               onClick={handleDiscard}>Discard</button>
+            <label style={{ color: 'white', marginLeft: '10px', marginTop: '5px'}}>
+                Enter roll no:
+                <input style={{marginLeft: '10px'}} type="text" value={rollNo} onChange={handleRollNoChange} />
+            </label>
           </div>
         </div>
       )}

@@ -2,6 +2,8 @@ from flask import Blueprint
 from flask_restx import Api
 
 from .emotions.endpoints import api as emotion_api
+from .sentences.endpoints import api as sentence_api
+from .recording.endpoints import api as recording_api
 
 blueprint = Blueprint("api", __name__)
 
@@ -24,3 +26,5 @@ api = Api(
 )
 
 api.add_namespace(emotion_api)
+api.add_namespace(sentence_api)
+api.add_namespace(recording_api)

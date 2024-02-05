@@ -72,8 +72,7 @@ class Base(object):
         :param id:
         :return:
         """
-        row = db.session.query(cls).filter_by(id=id).first()
-        return row
+        return db.session.query(cls).filter_by(id=id).first()
 
     @classmethod
     def get(cls):
@@ -81,5 +80,4 @@ class Base(object):
 
         :return:
         """
-        rows = db.session.query(cls).all()
-        return rows
+        return db.session.query(cls).all()

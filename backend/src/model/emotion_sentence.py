@@ -10,3 +10,14 @@ class EmotionSentence(Base):
 
     sentence_id = Column(Integer, ForeignKey("sentence.id"))
     emotion_id = Column(Integer, ForeignKey("emotion.id"))
+
+    @classmethod
+    def get_by_emotion_sentence(cls, sentence_id, emotion_id):
+        try:
+            return (
+                db.session.query(cls)
+                .filter(cls.sentence_id == sentence_id, cls.emotion_id == emotion_id)
+                .first()
+            )
+        except Exception as e:
+            print(f"Error getting EmotionSentence: {e}")

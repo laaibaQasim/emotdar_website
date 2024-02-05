@@ -15,14 +15,3 @@ class Enum(str, PyEnum):
         for member in cls:
             if member.name == key:
                 return member.value
-
-
-class Emotions(Enum):
-    HAPPY = "Happy"
-    SAD = "Sad"
-    ANGRY = "Angry"
-    EXCITED = "Excited"
-    NEUTRAL = "Neutral"
-    DISGUISE = "Disguise"
-    FEAR = "Fear"
-    SARCASTIC = "Sarcastic"

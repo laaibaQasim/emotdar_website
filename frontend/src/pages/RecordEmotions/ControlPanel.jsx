@@ -1,32 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const TimerDisplay = ({ timerValue }) => {
-  return (
-    <div style={{ marginLeft: 'auto', marginRight: '10px', fontWeight: 'bold', border: '1px solid #ccc', padding: '8px', borderRadius: '4px', display: 'inline-block' }}>
-      Timer: {timerValue} seconds
-    </div>
-  );
-};
+const ControlPanel = ({ onShowCamera, onStartRecording, onStartRecordingAudio, onShowSampleClick, showCamera,showSample,recording,recordingAudio }) => {
 
-const ControlPanel = ({ onShowCamera, onStartRecording, timerValue }) => {
   return (
-    <div class = "cp-body">
-      <>
-        <button
-          type="button"
-          className="cp-btn"
-          onClick={onShowCamera}
-          style={{ marginRight: '10px' }}>
-          Show Camera
-        </button>
-        <button
-          type="button"
-          className="cp-btn alert"
-          onClick={onStartRecording}
-          style={{ marginRight: '10px' }}>
-          Start Recording
-        </button>
-      </>
+    <div className="cp-body">
+      <button
+        type="button"
+        className={`cp-btn ${showSample ? 'selected' : ''}`}
+        onClick={() => onShowSampleClick()}
+        style={{ marginRight: '10px' }}>
+        Show Sample
+      </button>
+      <button
+        type="button"
+        className={`cp-btn  ${showCamera ? 'selected' : ''}`}
+        onClick={() => onShowCamera()}
+        style={{ marginRight: '10px' }}>
+        Show Camera
+      </button>
+      <button
+        type="button"
+        className={`cp-btn alert ${recording ? 'selected' : ''}`}
+        onClick={() => onStartRecording()}
+        style={{ marginRight: '10px' }}>
+        Record Video
+      </button>
+      <button
+        type="button"
+        className={`cp-btn alert ${recordingAudio ? 'selected' : ''}`}
+        onClick={() => onStartRecordingAudio()}
+        style={{ marginRight: '10px' }}>
+        Record Audio
+      </button>
     </div>
   );
 };

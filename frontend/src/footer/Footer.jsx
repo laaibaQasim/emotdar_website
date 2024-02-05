@@ -12,9 +12,9 @@ const Footer = ({marginTop}) => {
     return(
         <section id = "footer" className="footer" style={footerStyle}>
             <div className="social">
-                <a href ="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href ="#"><i class="fa-brands fa-github"></i></a>
-                <a href ="#"><i class="fa-brands fa-discord"></i></a>
+                <a href ="#"><i className="fa-brands fa-linkedin"></i></a>
+                <a href ="#"><i className="fa-brands fa-github"></i></a>
+                <a href ="#"><i className="fa-brands fa-discord"></i></a>
             </div>
             <ul>
                 <li>

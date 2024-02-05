@@ -1,40 +1,32 @@
 import React, { useState, useEffect } from 'react';
 
-const VideoPlayer = ({ selectedEmotion, showCamera, recording }) => {
+const VideoPlayer = ({ selectedEmotion, selectedSentence, showEmoji}) => {
   const [mediaUrl, setMediaUrl] = useState(null);
 
   useEffect(() => {
     const fetchMediaUrl = async () => {
       try {
-        if (showCamera) {
-          // Open camera using WebRTC
-          const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-          const videoElement = document.createElement('video');
-          videoElement.srcObject = stream;
-          videoElement.play();
-
-          // Append the video element to the DOM
-          document.getElementById('video-container').appendChild(videoElement);
-
-          return;
-        }
-
-        if (!selectedEmotion) {
-          // Set a default emoji GIF when no emotion is selected
+        console.log("sentence passed in comp: ", selectedEmotion, selectedSentence);
+        if (showEmoji) {
           setMediaUrl('http://127.0.0.1:5000/emotions/play');
           return;
         }
-        const videoPath = `/videos/${selectedEmotion}.mp4`;
-        setMediaUrl(videoPath);
-        console.log(mediaUrl);
+        console.log("requesting: ",`recordings/${selectedEmotion}/${selectedSentence}`);
+        const response = await fetch(`http://localhost:5000/recordings/${selectedEmotion}/${selectedSentence}`);
+
+        if (!response.ok) {
+          throw new Error(`Error fetching media URL: ${response.status} - ${response.statusText}`);
+        }
+
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        setMediaUrl(url);
       } catch (error) {
         console.error(error.message);
       }
     };
-
-    // Fetch media URL when selectedEmotion, showCamera, or recording changes
     fetchMediaUrl();
-  }, [selectedEmotion, showCamera, recording]); // Ensure useEffect runs when selectedEmotion, showCamera, or recording changes
+  }, [showEmoji, selectedEmotion,selectedSentence]);
 
   // Reset media URL when component unmounts
   useEffect(() => {
@@ -45,23 +37,16 @@ const VideoPlayer = ({ selectedEmotion, showCamera, recording }) => {
 
   return (
     <div id="video-container">
-      {mediaUrl ? (
-        showCamera ? (
-          <video width="640" height="360" key={mediaUrl} controls>
-            <source src={mediaUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : selectedEmotion ? (
-          <video width="640" height="360" key={mediaUrl} controls>
+      { (selectedEmotion && selectedSentence) ? (
+          <video width="700" height="500" key={mediaUrl} controls>
             <source src={process.env.PUBLIC_URL + mediaUrl} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        ) : (
+        ) : showEmoji ? (
           <img src={mediaUrl} alt="Default Emoji" style={{ marginTop: 70 }} />
-        )
-      ) : (
+        ) : (
         // Do not show "Loading media..." when the camera is displayed
-        !showCamera && <p>Loading media...</p>
+        !showEmoji && <p>Loading media...</p>
       )}
     </div>
   );

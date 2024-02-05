@@ -6,6 +6,8 @@ from api import blueprint
 from config import settings
 from model.base import db
 
+from api.utils import add_dummy_data
+
 app = Flask(__name__, static_folder="/static")
 app.app_context().push()
 
@@ -15,9 +17,10 @@ app.config["CORS_HEADERS"] = "Content-Type"
 app.register_blueprint(blueprint, url_prefix="/")
 db.init_app(app)
 Migrate(app, db)
-CORS(app, max_age=600)
+CORS(app)
 
 if __name__ == "__main__":
+    add_dummy_data()
     app.run(debug=True, port=5000)
 
 

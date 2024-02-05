@@ -21,5 +21,4 @@ class Emotion(Base):
         Returns:
             emotion
         """
-        row = db.session.query(cls).filter(cls.name == emotion).first()
-        return row
+        return db.session.query(cls).filter(cls.name == emotion).first()

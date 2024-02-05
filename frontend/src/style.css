@@ -11,7 +11,6 @@
 
 .emotion-list-container {
   margin-right: 40px; /* Adjust as needed */
-  margin-top: 100px;
 }
 
 .video-player-container {
@@ -56,28 +55,34 @@
     border-radius: 9px;
     font-size: 25px;
   }
+  .stn-btn:hover {
+    background-color: #8b8e91;
+  }
+  .stn-btn.selected-stn {
+    background-color: #20c45c;
+  }
 
   .list-btn:hover {
     background-color: #2d4a68;
   }
 
   .cp-btn {
-    margin-left: 50px;
+    margin-left: 10px !important;
     margin-top: 10px;
     background-color: #031427;
-    padding: 10px 50px;
+    padding: 5px 10px !important;
     border-radius: 9px;
     font-size: 16px;
   }
   .cp-btn.selected {
-    background-color: #2a333d;
+    background-color: #2a333d !important;
   }
 
   .cp-btn:hover {
     background-color: #142b44;
   }
   .cp-body {
-    margin-left: 400px;
+    margin-left: 500px;
   }
 
   button:hover {
@@ -109,4 +114,18 @@
   
   .cp-btn.alert:active {
     background-color: #5f5757;
+  }
+
+  .sentence-emotion-list {
+    display: flex;
+    margin-top: 100px;
+  }
+  .sentence-list {
+    margin-top: 100px;
+  }
+  .stn-btn {
+    border-radius: 5px;
+    background-color: #51565a;
+    font-weight: 500;
+    font-size: large;
   }
